@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function generatePlan() {
+      const days = document.getElementById("days").value;
+      const city = document.getElementById("city").value;
+      const interest = document.getElementById("interest").value;
+      let plan = "";
+
+      for (let i = 1; i <= days; i++) {
+        plan += `<h3>Day ${i} in ${city}</h3><p>Suggested activity: ${interest}</p>`;
+      }
+
+      document.getElementById("plan").innerHTML = plan;
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="trip-planner.html">Trip Planner</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="more.html">More</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Create Your Trip Plan</h2>
+    <form onsubmit="event.preventDefault(); generatePlan();">
+      <label>How many days?</label>
+      <input type="number" id="days" min="1" max="10" required><br><br>
+
+      <label>Select City:</label>
+      <select id="city" required>
+        <option value="Jeddah">Jeddah</option>
+        <option value="Riyadh">Riyadh</option>
+      </select><br><br>
+
+      <label>Interests:</label>
+      <select id="interest" required>
+        <option value="Cafés">Cafés</option>
+        <option value="Restaurants">Restaurants</option>
+        <option value="Tourist Attractions">Tourist Attractions</option>
+        <option value="Entertainment">Entertainment</option>
+      </select><br><br>
+
+      <button type="submit" class="btn">Generate Plan</button>
+    </form>
+
+    <div id="plan" class="plan-output"></div>
+  </main>
+</body>
+</html>
+
+
